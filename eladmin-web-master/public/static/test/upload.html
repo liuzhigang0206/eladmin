@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery带预览可拖拽文件上传代码</title>
+
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<link rel="stylesheet" href="./css/ssi-uploader.css" />
+
+</head>
+<body>
+	<div class="demo" style="width: 400px;">
+		<span id="demo-setting"><i
+			class="fa fa-cogs fa-spin txt-color-blueDark"></i></span>
+		<form>
+			<legend class="no-padding margin-bottom-10">操作面板</legend>
+			<section>
+				<div class="tab-content">
+					<div class="tab-pane active" id="hr1">
+						<ul class="nav nav-tabs">
+							<li class="active"><a data-toggle="tab" href="#AA">常规</a></li>
+							<li><a data-toggle="tab" href="#BB">公式查看</a></li>
+							<li><a data-toggle="tab" href="#CC">导入导出</a></li>
+						</ul>
+						<div class="tabbable tabs-below">
+							<div class="tab-content padding-10">
+								<div class="tab-pane active" id="AA">
+									<div class="option-row">
+										<div class="inputContainer">
+											<p>点击按钮提交修改数据</p>
+											<input class="btn btn-primary" type="button" id="commitData"
+												onclick="Yszx.commit(this)" value="提交" class="button">
+										</div>
+									</div>
+
+									<div class="inputContainer">
+										<div class="row">
+											<div class="col-md-12">
+												<p>（支持'jpg', 'png','txt','doc','docx','xls','xlsx'格式文件）</p>
+												<input type="file" multiple id="ssi-upload" />
+											</div>
+										</div>
+									</div>
+
+									<div class="inputContainer">
+										<input class="btn btn-primary" type="button" id="undo"
+											value="撤销" class="button"> <input
+											class="btn btn-primary" type="button" id="redo" value="重做"
+											class="button">
+									</div>
+								</div>
+								<div class="tab-pane" id="BB">
+									<div class="option-row">
+										<p>公式类型:formulaType</p>
+										<select id="formulaType">
+											<option value="0">计算</option>
+											<option value="1">审核</option>
+											<option value="2">收舍</option>
+											<option value="3">期间取数</option>
+											<option value="4">指标形的计算</option>
+											<option value="5">指标形的审核</option>
+											<option value="6">指标形的收舍</option>
+											<option value="9">单元格的登统公式</option>
+											<option value="10">指标形的登统公式</option>
+											<option value="102">&DUnit()</option>
+											<option value="103">&RPDate()</option>
+										</select>
+										<p>公式内容:formula</p>
+										<input value="导出PDF" id="formula">
+										<p>公式注释:formulaDescription</p>
+										<input value="导出PDF" id="formulaDescription">
+										<p>公式作用范围:scope</p>
+										<input value="导出PDF" id="scope">
+									</div>
+
+								</div>
+								<div class="tab-pane" id="CC">
+									<div class="option-row">
+										<div class="inputContainer">
+											导入:</br>
+											</br> <input type="file" id="fileDemo" class="input"> </br> <input
+												class="btn btn-primary" type="button" id="loadExcel"
+												value="导入" class="button">
+										</div>
+										<div class="inputContainer">
+											导出文件命名: </br>
+											</br> <input id="exportFileName" value="export.xlsx" class="input">
+											</br>
+											</br> <input class="btn btn-primary" type="button" id="saveExcel"
+												value="导出" class="button">
+										</div>
+										<div class="inputContainer">
+											<label>密码: <input type="password" id="password">
+											</label>
+										</div>
+									</div>
+									<div class="option-row">
+										<div class="inputContainer">
+											<p>点击导出PDF</p>
+											<input class="btn btn-primary" type="button" value="导出PDF"
+												id="savePDF">
+										</div>
+										<div class="inputContainer">
+											<p>点击打印</p>
+											<input class="btn btn-primary" type="button" value="打印"
+												id="btnPrint">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</form>
+	</div>
+
+	<script src="./js/jquery-2.1.1.min.js" type="text/javascript"></script>
+	<script src="./js/ssi-uploader.js"></script>
+	<script type="text/javascript">
+		$('#ssi-upload').ssi_uploader({
+			url : '#',
+			maxFileSize : 6,
+			allowed : [ 'jpg', 'gif', 'txt', 'png', 'pdf' ]
+		});
+	</script>
+
+</body>
+</html>

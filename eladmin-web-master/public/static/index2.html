@@ -1,0 +1,229 @@
+<!doctype html>
+<html style="height: 100%; font-size: 14px;">
+
+<head>
+<meta name="spreadjs culture" content="zh-cn" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../static/common/smartAdmin/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../static/common/spreadJS/css/gc.spread.sheets.excel2013white.13.0.0.css">
+<link rel="stylesheet" type="text/css" href="./test2/style.css">
+</head>
+<body>
+	<div class="sample-tutorial">
+		<div id="ss" class="sample-spreadsheets"></div>
+		<div class="options-container">
+			<div class="tab-content">
+				<div class="tab-pane active" id="hr1">
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#AA">锁定</a></li>
+						<li><a data-toggle="tab" href="#BB">排序筛选</a></li>
+						<li><a data-toggle="tab" href="#CC">条件格式</a></li>
+						<li><a data-toggle="tab" href="#DD">分组</a></li>
+						<li><a data-toggle="tab" href="#EE">查找替换</a></li>
+						<li><a data-toggle="tab" href="#FF">搜索</a></li>
+					</ul>
+					<div class="tabbable tabs-below">
+						<div class="tab-content padding-10">
+							<div class="tab-pane active" id="AA">
+									<br>
+									<div class="option-row">
+										<input id="chkProtectSheet" type="checkbox"> <label
+											for="chkProtectSheet"><font
+											style="vertical-align: inherit;"><font
+												style="vertical-align: inherit;">保护表</font></font></label>
+									</div>
+									<br>
+									<div class="option-row">
+										<label><font style="vertical-align: inherit;"><font
+												style="vertical-align: inherit;">使用以下保护选项可以限制用户在编辑工作表方面可以执行的操作。</font></font></label>
+									</div>
+									<div>
+										<div class="option-row">
+											<input id="chkSelectLockedCells" type="checkbox" checked="checked">
+											<label for="chkSelectLockedCells" class="sizedLabel"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">选择锁定的单元格</font></font></label>
+										</div>
+										<div class="option-row">
+											<input id="chkSelectUnlockedCells" type="checkbox"
+												checked="checked"> <label for="chkSelectUnlockedCells"
+												class="sizedLabel"><font style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">选择解锁的单元格</font></font></label>
+										</div>
+										<div class="option-row">
+											<input id="chkAllowSort" type="checkbox"> <label
+												for="chkAllowSort" class="sizedLabel"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">分类</font></font></label>
+										</div>
+										<div class="option-row">
+											<input id="chkAllowFilter" type="checkbox"> <label
+												for="chkAllowFilter" class="sizedLabel"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">过滤</font></font></label>
+										</div>
+										<div class="option-row">
+											<input id="chkAllowResizeRows" type="checkbox"> <label
+												for="chkAllowResizeRows" class="sizedLabel"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">调整行大小</font></font></label>
+										</div>
+										<div class="option-row">
+											<input id="chkAllowResizeColumns" type="checkbox"> <label
+												for="chkAllowResizeColumns" class="sizedLabel"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">调整列大小</font></font></label>
+										</div>
+										<div class="option-row">
+											<input id="chkAllowEditObjects" type="checkbox"> <label
+												for="chkAllowEditObjects" class="sizedLabel"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">编辑物件</font></font></label>
+										</div>
+										<div class="option-row">
+											<input id="chkAllowInsertRows" type="checkbox"> <label
+												for="chkAllowInsertRows" class="sizedLabel"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">插入行</font></font></label>
+										</div>
+										<div class="option-row">
+											<input id="chkAllowInsertColumns" type="checkbox"> <label
+												for="chkAllowInsertColumns" class="sizedLabel"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">插入列</font></font></label>
+										</div>
+										<div class="option-row">
+											<input id="chkAllowDeleteRows" type="checkbox"> <label
+												for="chkAllowDeleteRows" class="sizedLabel"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">删除行</font></font></label>
+										</div>
+										<div class="option-row">
+											<input id="chkAllowDeleteColumns" type="checkbox"> <label
+												for="chkAllowDeleteColumns" class="sizedLabel"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">删除列</font></font></label>
+										</div>
+										<div class="option-row">
+											<font style="vertical-align: inherit;"><font
+												style="vertical-align: inherit;"><input type="button"
+													value="设置" id="setProtectionOptions" style="width: 100px;"></font></font>
+										</div>
+										<div class="option-row">
+											<label><font style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">选择保护选项，然后单击设置</font></font></label>
+										</div>
+								</div>
+							</div>
+							<div class="tab-pane" id="BB">
+								<div class="options-container">
+							        <p> 使用这些选项在"跨页"中创建自定义筛选器。突出显示列 D 中的某些名称，然后单击"设置筛选器"以创建筛选器，允许用户根据这些名称选择要显示的行。</p>
+							        <div class="option-row">
+							            <label>条件:</label>
+							            <select id="Condition1">
+							                <option value="0" selected>单元格值</option>
+							                <option value="1">数值</option>
+							                <option value="2">文本</option>
+							                <option value="3">颜色</option>
+							                <option value="4">公式</option>
+							                <option value="5">日期</option>
+							                <option value="6">日期EX</option>
+							                <option value="7">文本长度</option>
+							                <option value="8">前十</option>
+							            </select>
+							        </div>
+							        <div class="option-row">
+							            <label>比较类型:</label>
+							            <select id="optEnumType1">
+							                <option value='0' selected>等于</option>
+							                <option value='1'>不等于</option>
+							                <option value='2'>大于</option>
+							                <option value='3'>大于等于</option>
+							                <option value='4'>小于</option>
+							                <option value='5'>小于等于</option>
+							            </select>
+							        </div>
+							        <div class="option-row">
+							            <label>比较值或公式：</label>
+							            <input id="txtFormulas1" type="text" />
+							        </div>
+							        <div class="option-row">
+							            <label></label>
+							            <input type="radio" value="And" name="relation" id="rdoAND" />
+							            <label for="rdoAND" >并且</label>
+							            <input type="radio" value="Or" name="relation" id="rdoOR" />
+							            <label for="rdoOR">或者</label>
+							        </div>
+							        <div class="option-row">
+							            <label>条件:</label>
+							            <select id="Condition2">
+							                 <option value="0" selected>单元格值</option>
+							                <option value="1">数值</option>
+							                <option value="2">文本</option>
+							                <option value="3">颜色</option>
+							                <option value="4">公式</option>
+							                <option value="5">日期</option>
+							                <option value="6">日期EX</option>
+							                <option value="7">文本长度</option>
+							                <option value="8">前十</option>
+							            </select>
+							        </div>
+							        <div class="option-row">
+							            <label>比较类型:</label>
+							            <select id="optEnumType2">
+							                <option value='0' selected>等于</option>
+							                <option value='1'>不等于</option>
+							                <option value='2'>大于</option>
+							                <option value='3'>大于等于</option>
+							                <option value='4'>小于</option>
+							                <option value='5'>小于等于</option>
+							            </select>
+							        </div>
+							        <div class="option-row">
+							            <label>比较值或公式：</label>
+							            <input id="txtFormulas2" type="text" />
+							        </div>
+							        <div class="option-row">
+							            <label></label>
+							            <input type="checkbox" id="chkIgnoreBlank" />
+							            <label for="chkIgnoreBlank">忽略空白</label>
+							        </div>
+							        <div class="option-row">
+							            <input type="button" value="设置" id="btnHideRowFilter" />
+							            <input type="button" value="清空" id="btnClearFilter" />
+							        </div>
+							    </div>
+							</div>
+							<div class="tab-pane" id="CC">
+							</div>
+							<div class="tab-pane" id="DD">
+							</div>
+							<div class="tab-pane" id="EE">
+							</div>
+							<div class="tab-pane" id="FF">
+							</div>
+						</div>
+					</div>
+	
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<!-- BOOTSTRAP JS -->
+<script src="../../static/common/smartAdmin/js/libs/jquery-3.2.1.min.js"></script>
+<script src="../../static/common/smartAdmin/js/libs/jquery-ui.min.js"></script>
+<script src="../../static/common/smartAdmin/js/plugin/jquery-form/jquery-form.min.js"></script>
+<script src="../../static/common/smartAdmin/js/bootstrap/bootstrap.min.js"></script>
+
+<script
+	src="../../static/common/spreadJS/scripts/gc.spread.sheets.all.13.0.0.min.js"></script>
+<script
+	src="../../static/common/spreadJS/scripts/resources/zh/gc.spread.sheets.resources.zh.13.0.0.min.js"></script>
+<script src="./test2/index.js"></script>
+<script>
+	
+</script>
+</html>

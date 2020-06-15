@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+</head>
+<body>
+	<ul id="treeDemo" class="ztree"></ul>
+</body>
+<script src="../../../static/common/smartAdmin/js/libs/jquery-3.2.1.min.js"></script>
+<script src="../zTree_v3/js/jquery.ztree.all.js"></script>
+<script src="../js/spread_property.js"></script>
+<script>
+	$(document).ready(function() {
+		// 添加授权
+		var zTreeObj;
+		// zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+		var setting = {
+			async: {
+				enable: true,
+				contentType: "application/json",
+				url: DATAHOST+'/execute/unt/unit/list',
+				type:'GET'
+			},
+			callback: {
+				onAsyncError: zTreeOnAsyncError,
+				onAsyncSuccess: zTreeOnAsyncSuccess,
+				beforeRightClick: zTreeBeforeRightClick
+			}
+		};
+		
+		function zTreeBeforeRightClick(treeId, treeNode) {
+		    return false;
+		};
+		function zTreeOnAsyncError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
+		    alert(XMLHttpRequest);
+		};
+		function zTreeOnAsyncSuccess(event, treeId, treeNode, msg) {
+		    alert(msg);
+		};
+		
+		// zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+		var zNodes = [];
+		
+		$.ajax({
+			url : DATAHOST+'/execute/unt/unit/list',
+			type : "GET",
+			success : function(data){
+				if (data.code == 0) {
+					data=data.data;
+					$.each(data,function(i,v){
+						var map = {};
+						map['name'] = v.n;
+						map['id'] = v.c
+						if(v.ch) {
+							map['children'] =  createSubTree(v.ch);
+						}
+						zNodes.push(map);
+					});
+	    			zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+				}else{
+					alert('Exception :'+data.returnMessage);
+				}
+			}
+		});
+		
+		var createSubTree = function(data){
+			if(!data) return [];
+			var children = [];
+			$.each(data,function(i,v){
+				var map = {};
+				map['name'] = v.n;
+				map['id'] = v.c
+				if(v.ch) {
+					map['children'] =  createSubTree(v.ch);
+				}
+				children.push(map);
+			});
+			return children;
+		}
+		
+	}); 
+</script>
+</html>

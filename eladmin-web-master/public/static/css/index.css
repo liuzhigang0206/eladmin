@@ -1,0 +1,119 @@
+#header>:first-child, aside {
+	width: 300px !important;
+}
+
+#main {
+	margin-left: 300px !important;
+	padding: 0px !important;
+}
+.progress{
+	margin:0px !important;
+}
+.topRight{
+	float: right;
+	margin:0px !important;
+}
+
+/* 工具栏*/
+#header>div {
+	color: #FFF;
+}
+
+.tree li span {
+	font-size: 14px;
+	border: none !important;
+}
+
+
+
+/* 树状结构*/
+#left-panel>div{
+	overflow-x: auto;
+    overflow-y: auto;
+    height:54rem;
+}
+#left-panel>div>div {
+	padding-left: 10px;
+	padding-top: 20px;
+}
+#content {
+	padding: 0px !important;
+}
+
+/* table  */
+#statusBar {
+	bottom: 0;
+	height: 25px;
+	width: 100%;
+	position: relative;
+	float: left;
+}
+
+/*
+右侧工具栏
+*/
+.sample-tutorial {
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+}
+
+.sample-spreadsheets {
+	width: calc(100% - 280px);
+	height: 54.5rem;
+	overflow: hidden;
+	float: left;
+}
+
+.options-container {
+	float: right;
+	width: 280px;
+	padding: 12px;
+	height: 53.5rem;
+	box-sizing: border-box;
+	background: #fbfbfb;
+}
+
+.sample-options {
+	z-index: 1000;
+}
+
+.inputContainer {
+	width: 100%;
+	height: auto;
+	border: 1px solid #eee;
+	padding: 6px 12px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+}
+
+.input {
+	font-size: 14px;
+	height: 20px;
+	border: 0;
+	outline: none;
+	background: transparent;
+}
+
+.button {
+	height: 30px;
+	padding: 6px 12px;
+	width: 80px;
+	margin-top: 6px;
+}
+
+.group {
+	padding: 12px;
+}
+
+.group input {
+	padding: 4px 12px;
+}
+
+body {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}

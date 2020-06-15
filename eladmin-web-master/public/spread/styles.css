@@ -1,0 +1,51 @@
+.sample-tutorial {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.sample-spreadsheets {
+   width: calc(100% - 280px);
+   height: calc(100% - 140px);
+   overflow: hidden;
+   float: left;
+}
+#statusBar {
+    bottom: 0;
+    height: 25px;
+    width: 100%;
+    position: relative;
+}
+
+.options-container {
+   float: right;
+   width: 280px;
+   padding: 12px;
+   height: 100%;
+   box-sizing: border-box;
+   background: #fbfbfb;
+   overflow: auto;
+}
+
+.option-row {
+   font-size: 14px;
+   padding: 5px;
+   margin-top: 10px;
+}
+p{
+   padding:2px 10px;
+   background-color:lavender;
+}
+
+input[type="button"] {
+   width: 100%;
+   margin-bottom: 2px;
+}
+
+body {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+}

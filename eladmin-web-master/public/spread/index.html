@@ -1,0 +1,86 @@
+<!doctype html>
+<html style="height:100%;font-size:14px;">
+
+<head>
+    <meta name="spreadjs culture" content="zh-cn" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/css/gc.spread.sheets.13.0.0.css">
+    <script src="scripts/license.js" type="text/javascript"></script>
+    <script src="scripts/gc.spread.sheets.all.13.0.0.min.js" type="text/javascript"></script>
+    <script src="data/data01.js" type="text/javascript"></script>
+    <script src="scripts/resources/zh/gc.spread.sheets.resources.zh.13.0.0.min.js" type="text/javascript"></script>
+    
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+</head>
+<script>
+window.onload = function() {
+    //Please provide valid license key.
+    GC.Spread.Sheets.LicenseKey = "10.30.132.11,E974268733586292#B0RRK2iQ9oXNs36Uhh6cTd7ZMB7KrtiN9EHb4hGUIBneuF7TyRFMSZnUzAlaEBzRuRldz5WdPd4a9YmbpR4c4QEWuZWRyY5N0ZVdtV7d75WWLRDc7lTcCFWNzMFTGxUUndVZlRzSnBXY8EGZxZkWip5NXFXODFTTpJVYVl5NBp6V5F6bBZlMw9mN6ckRHhlNVtCNZV7bIlXZ8REaYt6NBtWMptieqR6d8oUMqV4Usl6UBJ4Q0ZzRJFlQ8c4V7tWVyM6RWRkQKF4Vl3WcPhTVzUzL0lEMMp5UqZFWWhkNn3ia73kdyZjW4IjYYh5L5AFOTVGZHVkbFlzViojITJCLiQ4NxUTRwMzMiojIIJCL9IDN5cTN9ATO0IicfJye35XX3JSVPNjNiojIDJCLiMTMuYHITpEIkFWZyB7UiojIOJyebpjIkJHUiwiI5QzNyEDMgkDM4ADMyAjMiojI4J7QiwiI9ATNwAjMwIjI0ICc8VkIsISMx8iMzEjLwMjLwEjI0IyctRkIsIyvde+vUaepVeujYauI0ISYONkIsUWdyRnOiwmdFJCLiITOyYDO5MzM7gjNyQzN9IiOiQWSiwSflNHbhZmOiI7ckJye0ICbuFkI1pjIEJCLi4TPBx6SYZDNvJkVwhGRGRkVUZGWVFlc4kWWzhkWLZDS8g7QDNkVGtSZCNHWyczYn3UY4p6dHNFO7o6LJVGNm9mQF3Gck5mSHh4ZyMzRtBFZhlWbiFmdaFGe9cWNV9wRw1";
+	var spread = new GC.Spread.Sheets.Workbook(document.getElementById('ss'), {sheetCount: 1});
+	/*
+    * get spread object
+    * var spread = GC.Spread.Sheets.findControl(document.getElementById('ss'));
+    */
+    initSpread(spread);
+    var statusBar = new GC.Spread.Sheets.StatusBar.StatusBar(
+        document.getElementById('statusBar')
+    );
+    statusBar.bind(spread);
+    
+};
+function myfunc() {
+    myfunc.prototype = new GC.Spread.CalcEngine.Functions.Function("MSNOWUNTNAME", 0, 0, {name: "MSNOWUNTNAME",description: "获得当前单位名称"});
+    myfunc.prototype.evaluate = function (args) {
+        return "单位名称";
+    }
+}
+    
+function initSpread(spread) {
+	var sd = dataSource;
+	var sheet = spread.getActiveSheet();
+	if (sd.length > 0) {
+		sheet.setDataSource(sd);
+	}
+	sheet.setColumnWidth(0, 160);
+	sheet.setColumnWidth(1, 70);
+	sheet.setColumnWidth(2, 90);
+	sheet.setColumnWidth(3, 110);
+	sheet.setColumnWidth(4, 80);
+    sheet.setColumnWidth(6, 110);
+    
+    //显示公式栏
+    var spreadNS = GC.Spread.Sheets;
+    var fbx = new spreadNS.FormulaTextBox.FormulaTextBox(document.getElementById('formulaBar'));
+    fbx.workbook(spread);
+
+    //单元格值改变
+    sheet.bind(GC.Spread.Sheets.Events.CellChanged, function (e, info) {
+        if(info.sheetArea === GC.Spread.Sheets.SheetArea.viewport){
+        alert("Cell index (" + info.row + "," + info.col + ")");
+        }
+    });
+
+    spread.addCustomFunction(new myfunc());
+}
+</script>
+<body>
+
+    <div class="sample-tutorial">
+        <div class="demo-options">
+            <div class="option-row">
+                <div id="formulaBar" contenteditable="true" spellcheck="false" style="font-family: Calibri;border: 1px solid #808080;width:100%;"></div>
+            </div>
+        </div>
+        <div id="ss" class="sample-spreadsheets"></div>
+        <div class="options-container">
+            <p>脏数据</p>
+            <div class="option-row" style="width:100%;height:200px;">
+                <textarea id="taResult" style="width:100%;padding:0;float:right;height:200px;background:none">脏数据列表</textarea>
+            </div>
+        </div>
+        <div id="statusBar"></div>
+        
+    </div>
+</body>
+</html>
